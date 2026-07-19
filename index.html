@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taichung Map</title>
+    <title>Taichung, Taiwan Map</title>
 
-    <!-- Leaflet CSS -->
+    <!-- Leaflet map library -->
     <link 
         rel="stylesheet" 
-        href="https://unpkg.com/leaflet/dist/leaflet.css"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
 
     <style>
@@ -18,9 +18,13 @@
             font-family: Arial, sans-serif;
         }
 
-        h2 {
-            text-align: center;
-            margin: 10px;
+        h1 {
+            height: 50px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
         }
 
         #map {
@@ -32,35 +36,37 @@
 
 <body>
 
-<h2>Taichung, Taiwan</h2>
+<h1>Taichung, Taiwan</h1>
 
 <div id="map"></div>
 
 <!-- Leaflet JavaScript -->
 <script 
-    src="https://unpkg.com/leaflet/dist/leaflet.js">
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
 <script>
-    // Taichung coordinates
+    // Taichung City coordinates
     const taichung = [24.1477, 120.6736];
 
     // Create map
-    const map = L.map('map').setView(taichung, 13);
+    const map = L.map("map").setView(taichung, 13);
 
-    // OpenStreetMap tiles
+    // OpenStreetMap layer
     L.tileLayer(
-        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
             maxZoom: 19,
-            attribution: '&copy; OpenStreetMap contributors'
+            attribution: "© OpenStreetMap contributors"
         }
     ).addTo(map);
 
     // Add marker
     L.marker(taichung)
         .addTo(map)
-        .bindPopup("<b>Taichung, Taiwan</b>")
+        .bindPopup(
+            "<b>Taichung, Taiwan</b><br>Central Taichung"
+        )
         .openPopup();
 </script>
 
